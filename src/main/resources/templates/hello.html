@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue with Tailwind Example</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+<!-- TEMPLATE -->
+<div id="app" class="max-w-4xl mx-auto p-6">
+    <h1 class="text-4xl font-bold text-center text-blue-500 mb-4">Hello from the HTML Template</h1>
+    <h2 class="text-2xl font-medium text-center text-gray-700 mb-6">{{ appMessage }}</h2>
+
+    <!-- Global Component -->
+    <global-component message="Hello from the global component" class="mb-6 p-4 border border-gray-300 rounded-md shadow-sm bg-white"></global-component>
+
+    <!-- Specific Component -->
+    <specific-component class="p-4 border border-gray-300 rounded-md shadow-sm bg-white"></specific-component>
+</div>
+
+<!-- Load Vue.js first -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<!-- Main JavaScript with global components -->
+<script type="module" src="/components/main.js"></script>
+
+<!-- Specific component for this view -->
+<script type="module" src="specificComponent.js"></script>
+<script type="module">
+    import SpecificComponent from '/components/specificComponent.js';
+
+    // Create a new Vue instance for this specific component
+    new Vue({
+        el: '#app',
+        components: {
+            'specific-component': SpecificComponent, // Register it locally
+        },
+        data: {
+            appMessage: 'Hello from this specific component!',
+        },
+    });
+</script>
+</body>
+</html>

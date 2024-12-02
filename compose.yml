@@ -1,0 +1,15 @@
+
+services:
+  springboot-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    volumes:
+      - ./src/main/resources/static:/app/src/main/resources/static
+    #I think this only works for dev-mode
+    #I think it's so we don't need to rebuild everytime we change something in the static files,
+    command: ["java", "-jar", "/app/target/your-springboot-app.jar"]
