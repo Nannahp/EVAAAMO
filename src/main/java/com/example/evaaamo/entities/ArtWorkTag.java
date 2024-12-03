@@ -24,6 +24,10 @@ public class ArtWorkTag {
         this.artWork = artWork;
     }
 
+    public ArtWorkTag(){
+
+    }
+
     public int getTagId() {
         return tagId;
     }

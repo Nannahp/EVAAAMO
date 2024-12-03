@@ -12,7 +12,7 @@ public class ArtWork {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int artWorkId;
+    private long artWorkId;
 
     private String title;
     private String description;
@@ -25,11 +25,11 @@ public class ArtWork {
     @JoinColumn(name = "mediaidfk", referencedColumnName = "mediaId", nullable = false)
     private Media media;
 
-    @OneToMany(mappedBy = "artwork", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "artWork", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ArtWorkTag> tags = new ArrayList<>();
 
 
-    public ArtWork(int artWorkId, String title,
+    public ArtWork(long artWorkId, String title,
                    String description, double price,
                    boolean isSold, LocalDateTime dateCreated,
                    boolean type, Media media) {
@@ -49,11 +49,11 @@ public class ArtWork {
 
     }
 
-    public int getArtWorkId() {
+    public long getArtWorkId() {
         return artWorkId;
     }
 
-    public void setArtWorkId(int artWorkId) {
+    public void setArtWorkId(long artWorkId) {
         this.artWorkId = artWorkId;
     }
 
