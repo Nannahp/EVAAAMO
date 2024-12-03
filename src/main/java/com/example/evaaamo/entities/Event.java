@@ -13,7 +13,7 @@ public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long eventId;
+    private int eventId;
     @Nonnull
     LocalDate startDate;
     @Nullable
@@ -26,7 +26,7 @@ public class Event {
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     private List<Media> mediaUrls;
 
-    public Event(long eventId, @Nonnull LocalDate startDate, @Nullable LocalDate endDate, @Nullable String title, @Nullable String description, List<Media> mediaUrls) {
+    public Event(int eventId, @Nonnull LocalDate startDate, @Nullable LocalDate endDate, @Nullable String title, @Nullable String description, List<Media> mediaUrls) {
         this.eventId = eventId;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -45,7 +45,7 @@ public class Event {
     public Event() {
     }
 
-    public long getEventId() {
+    public int getEventId() {
         return eventId;
     }
 

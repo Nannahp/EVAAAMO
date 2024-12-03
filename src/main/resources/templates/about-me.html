@@ -12,6 +12,7 @@
 <div id="app">
 <!--change when components come-->
 <about-me></about-me>
+<event-list></event-list>
 
 <H2>EVENTS</H2>
 </div>
@@ -23,16 +24,21 @@
 
 <!-- Main JavaScript with global components -->
 <script type="module" src="/components/main.js"></script>
+
+
+
 <!-- Specific component for this view -->
-<script type="module" src="/components/aboutMe.js"></script>
+<!--<script type="module" src="/components/about-me.js"></script>-->
 <script type="module">
-    import aboutMe from '/components/aboutMe.js';
+    import aboutMe from '/components/about-me.js';
+    import eventList from '/components/events.js';
 
     // Create a new Vue instance for this specific component
     new Vue({
         el: '#app',
         components: {
             'aboutMe': aboutMe, // Register it locally
+            'event-list': eventList,
         },
         data: {
 

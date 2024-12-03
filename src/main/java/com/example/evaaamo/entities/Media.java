@@ -1,5 +1,6 @@
 package com.example.evaaamo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,8 +11,9 @@ public class Media {
     private String mediaUrl;
 
     @ManyToOne
-    @JoinColumn(name = "event_id")
-    private Event event;  // The event this media belongs to
+    @JoinColumn(name = "event_id") // Foreign key to Event
+    @JsonIgnore
+    private Event event;
 
 
     public Media(int mediaId, String mediaUrl) {
