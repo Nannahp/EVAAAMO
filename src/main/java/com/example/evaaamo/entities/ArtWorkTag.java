@@ -12,15 +12,15 @@ public class ArtWorkTag {
     @Enumerated(EnumType.STRING)
     private TagType tagType;
 
-    private String value;
+    private String tagValue;
 
     @ManyToOne
     @JoinColumn(name = "artworkidfk", nullable = false)
     private ArtWork artWork;
 
-    public ArtWorkTag(TagType tagType, String value, ArtWork artWork) {
+    public ArtWorkTag(TagType tagType, String tagValue, ArtWork artWork) {
         this.tagType = tagType;
-        this.value = value;
+        this.tagValue = tagValue;
         this.artWork = artWork;
     }
 
@@ -44,12 +44,12 @@ public class ArtWorkTag {
         this.tagType = tagType;
     }
 
-    public String getValue() {
-        return value;
+    public String getTagValue() {
+        return tagValue;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setTagValue(String tagValue) {
+        this.tagValue = tagValue;
     }
 
     public ArtWork getArtWork() {
