@@ -6,5 +6,19 @@
 </head>
 <body>
 <h1>Galleri</h1>
+<div class="gallery">
+    <div class="artwork" th:each="artwork : ${artworks}">
+        <h2 th:text="${artwork.title}">ArtWork Title</h2>
+        <p th:text="${artwork.description}">ArtWork Description</p>
+        <p>Pris: <span th:text="${artwork.price}">1000</span> DKK</p>
+        <img th:src="${artwork.media.mediaUrl}" alt="ArtWork Image">
+
+        <ul>
+            <li th:each="tag : ${artwork.tags}" th:text="${tag.tagValue}"></li>
+        </ul>
+
+        <p th:if="${artwork.sold}">SOLGT</p>
+    </div>
+</div>
 </body>
 </html>
