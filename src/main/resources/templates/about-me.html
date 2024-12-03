@@ -7,10 +7,37 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+
+<!-- TEMPLATE -->
+<div id="app">
 <!--change when components come-->
-<H1 class="text-center sm:text-left">OM MIG</H1>
-<img class="text-center sm:text-left" th:src="@{/assets/eva.png}" alt="Eva"></img>
+<about-me></about-me>
 
 <H2>EVENTS</H2>
+</div>
+
+<!-- Load Vue.js first -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<!-- Main JavaScript with global components -->
+<script type="module" src="/components/main.js"></script>
+<!-- Specific component for this view -->
+<script type="module" src="/components/aboutMe.js"></script>
+<script type="module">
+    import aboutMe from '/components/aboutMe.js';
+
+    // Create a new Vue instance for this specific component
+    new Vue({
+        el: '#app',
+        components: {
+            'aboutMe': aboutMe, // Register it locally
+        },
+        data: {
+
+        },
+    });
+</script>
 </body>
 </html>
