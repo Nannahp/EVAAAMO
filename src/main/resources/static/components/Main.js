@@ -9,6 +9,6 @@ Vue.component('global-component', GlobalComponent);
 new Vue({
     el: '#app',
     data: {
-        appMessage: 'Hello from main.js!',
+        appMessage: 'Hello from Main.js!',
     },
 });

@@ -1,5 +1,6 @@
 package com.example.evaaamo.controllers;
 import com.example.evaaamo.entities.Event;
+import com.example.evaaamo.entities.EventDTO;
 import com.example.evaaamo.repositories.EventRepository;
 import com.example.evaaamo.services.JsonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,8 @@ public class AboutMeRestController {
 }
 
 @GetMapping("/api/events")
-    public List<Event> getAllEvents() {
-    List<Event> events = eventRepository.findAll();
+    public List<EventDTO> getAllEvents() {
+    List<EventDTO> events = eventRepository.findEventSummary();
     return events;
 }
 
