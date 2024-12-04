@@ -14,7 +14,7 @@ public class LoginController {
     }
 
     //For testing
-    @GetMapping("/admin/home")
+    @GetMapping("/home/admin/now")
     public String home(Model model) {
         model.addAttribute("message", "Welcome to the secured home page!");
         return "home";

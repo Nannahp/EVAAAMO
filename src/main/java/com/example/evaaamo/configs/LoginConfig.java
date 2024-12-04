@@ -3,6 +3,7 @@ package com.example.evaaamo.configs;
 import com.example.evaaamo.entities.User;
 import com.example.evaaamo.repositories.LoginRepository;
 import com.example.evaaamo.services.LoginService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +13,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 
 @Configuration
 public class LoginConfig {
@@ -24,7 +26,7 @@ public class LoginConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/admin/**").authenticated() //Only admin routes require login
+                        .requestMatchers(new CustomAdminMatcher()).authenticated() //Only admin routes require login, and admin can appear anywhere
                         .anyRequest().permitAll() //All other pages are always available
                 )
                 .formLogin(form -> form
@@ -66,4 +68,11 @@ public class LoginConfig {
         };
     }
 
+    //Custom matcher class for /admin URL matching
+    public static class CustomAdminMatcher implements RequestMatcher {
+        @Override
+        public boolean matches(HttpServletRequest request) {
+            return request.getRequestURI().contains("/admin");
+        }
+    }
 }
