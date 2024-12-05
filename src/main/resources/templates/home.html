@@ -5,9 +5,16 @@
 </head>
 <body>
 <h1 th:text="${message}"></h1>
+
+<form th:action="@{/reset-password}" method="get">
+    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Reset Password
+    </button>
+</form>
+
 <a href="#" onclick="document.getElementById('logoutForm').submit();">Logout</a>
 
-<form id="logoutForm" th:action="@{/logout}" method="post" style="display:none;">
+<form id="logoutForm" th:action="@{/logout}" style="display:none;">
     <button type="submit">Logout</button>
 </form>
 </body>
